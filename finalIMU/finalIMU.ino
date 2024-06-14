@@ -166,16 +166,26 @@ void loop() {
 
     // Loop to find the max score excluding label 5
     for (int i = 0; i < label_count; i++) {
-        // Serial.print(labels[i]);
-        // Serial.print(" ");
-        // Serial.print(output->data.int8[i]);
-        // Serial.print(" ");
-        if (i != 5 && output->data.int8[i] > -90) {
-            if (output->data.int8[i] > max_score) {
-                max_score = output->data.int8[i];
-                max_index = i;
-                found_valid_score = true;
-            }
+        if (i == 1 && output->data.int8[i] > -110) {
+          if (output->data.int8[i] > max_score) {
+              max_score = output->data.int8[i];
+              max_index = i;
+              found_valid_score = true;
+          }
+        }
+        else if (i == 0 && output->data.int8[i] > -80) {
+          if (output->data.int8[i] > max_score) {
+              max_score = output->data.int8[i];
+              max_index = i;
+              found_valid_score = true;
+          }
+        }
+        else if (i != 0 && i != 1 && i != 5 && output->data.int8[i] > -90) {
+          if (output->data.int8[i] > max_score) {
+              max_score = output->data.int8[i];
+              max_index = i;
+              found_valid_score = true;
+          }
         }
     }
 
